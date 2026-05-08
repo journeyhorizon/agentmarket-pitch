@@ -480,6 +480,20 @@
       line-height: 1; margin-bottom: 0.5rem;
     }
     .ask-label { font-size: 1rem; color: var(--muted); margin-bottom: 2.5rem; }
+    #seed-round { max-width: none; padding: 7rem 4rem; }
+    #seed-round .inner { max-width: 1200px; margin: 0 auto; }
+    .seed-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 3rem; align-items: start; }
+    .seed-amount {
+      font-size: 3.5rem; font-weight: 900; letter-spacing: -0.06em;
+      background: var(--grad-gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      line-height: 1; margin-bottom: 0.5rem;
+    }
+    .seed-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 1.25rem;
+      padding: 1.5rem 1.75rem; margin-bottom: 1rem;
+    }
+    .seed-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .seed-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
     .funds-list { display: flex; flex-direction: column; gap: 1.25rem; }
     .fund-item {}
     .fund-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem; }
@@ -556,6 +570,7 @@
       .cred-grid { grid-template-columns: 1fr 1fr; }
       .timeline { grid-template-columns: 1fr; }
       .ask-grid { grid-template-columns: 1fr; }
+      .seed-grid { grid-template-columns: 1fr; }
       .market-grid { grid-template-columns: 1fr; }
       .proof-row { grid-template-columns: 1fr; }
       .rail-row { grid-template-columns: 1fr; }
@@ -1175,6 +1190,42 @@
     </div>
   </div>
 </div>
+
+<!-- SEED ROUND -->
+<section id="seed-round">
+  <div class="inner">
+    <div class="section-header fade-up">
+      <span class="section-label">Next Raise</span>
+      <h2 class="section-title">The angel round proves the rails.<br><span class="gold-text">The seed round scales them.</span></h2>
+      <p class="section-sub">We want investors to understand the full funding path now: this $100K angel round is deliberately lean, but AgentMarket will need a larger seed round to scale the marketplace once the proof points are in place.</p>
+    </div>
+
+    <div class="seed-grid">
+      <div class="fade-up">
+        <div class="seed-amount">$3–5M USD</div>
+        <div class="ask-label">Planned Seed Round · Oct–Dec 2026</div>
+        <p style="font-size:0.95rem;color:var(--muted);line-height:1.7;max-width:460px;">
+          The seed round is expected to fund the step-change from validated MVP to scaled marketplace: deeper engineering, seller liquidity, trust infrastructure, compliance, integrations, and category expansion.
+        </p>
+      </div>
+
+      <div>
+        <div class="seed-card fade-up">
+          <h4>Set expectations early</h4>
+          <p>The current angel round is not intended to fully capitalise AgentMarket. It funds proof: working rails, activated communities, seller onboarding, and first transaction evidence.</p>
+        </div>
+        <div class="seed-card fade-up fade-up-delay-1">
+          <h4>Scale needs capital</h4>
+          <p>Once agent-originated transactions are live, the bottleneck shifts to engineering depth, seller support, liquidity, trust and safety, insurance operations, and expansion into additional physical goods categories.</p>
+        </div>
+        <div class="seed-card fade-up fade-up-delay-2">
+          <h4>Seed milestones</h4>
+          <p>Target proof points before the raise: live MCP/A2A rails, supply-side sellers onboarded, early GMV, repeat transactions, and credible evidence that agents can initiate and complete physical-goods trades.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- CLOSE -->
 <section id="close">
