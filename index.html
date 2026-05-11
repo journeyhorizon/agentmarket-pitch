@@ -633,6 +633,8 @@
       footer { padding: 2rem 1.5rem; }
     }
     @media print {
+      @page { size: A4; margin: 12mm; }
+
       :root, body.light-theme {
         --bg: #ffffff;
         --bg2: #ffffff;
@@ -641,21 +643,202 @@
         --white: #0f172a;
         --muted: #334155;
         --dim: #64748b;
+        --blue: #1d4ed8;
+        --teal: #0f766e;
+        --gold: #b45309;
+        --red: #b91c1c;
       }
+
+      * {
+        animation: none !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
       html { scroll-behavior: auto; }
-      body { background: #ffffff; color: #0f172a; }
-      nav, .hero-scroll, .close-actions, footer { display: none !important; }
+      body {
+        background: #ffffff !important;
+        color: #0f172a !important;
+        font-size: 9.5pt;
+        line-height: 1.38;
+        overflow: visible;
+      }
+
+      nav, .hero-scroll, .hero-actions, .close-actions { display: none !important; }
+      .hero-bg, .close-bg, .divider { display: none !important; }
+      .fade-up { opacity: 1 !important; transform: none !important; }
+      a { color: inherit; text-decoration: none; }
+
       section, #stats, #why-now, #comparables, #team, #ask, #seed-round {
-        max-width: none; padding: 2rem 0 !important; background: #ffffff !important;
+        max-width: none !important;
+        width: 100% !important;
+        padding: 0 0 9mm !important;
+        margin: 0 0 9mm !important;
+        background: #ffffff !important;
+        border-bottom: 1px solid #e2e8f0;
+        break-inside: auto;
+        page-break-inside: auto;
+      }
+      section:not(#hero), #why-now, #comparables, #team, #ask, #seed-round {
+        break-before: page;
+        page-break-before: always;
+      }
+      #hero {
+        min-height: auto !important;
+        padding: 0 0 10mm !important;
+        border-bottom: 2px solid #1d4ed8;
+      }
+      #close {
+        min-height: auto !important;
+        text-align: left;
+        align-items: flex-start;
+      }
+      .inner, .full-bleed > .inner { max-width: none !important; padding: 0 !important; }
+      .hero-content, .close-content { max-width: none !important; }
+
+      .hero-badge {
+        margin-bottom: 7mm;
+        color: #1d4ed8 !important;
+        background: #eff6ff !important;
+        border: 1px solid #bfdbfe !important;
+      }
+      .hero-badge .dot { display: none; }
+      h1 {
+        font-size: 34pt !important;
+        line-height: 0.98 !important;
+        letter-spacing: -0.04em;
+        margin-bottom: 6mm !important;
+      }
+      .hero-sub {
+        max-width: 170mm;
+        font-size: 12pt !important;
+        line-height: 1.45 !important;
+        margin-bottom: 0 !important;
+      }
+      .section-header { margin-bottom: 7mm !important; }
+      .section-label {
+        color: #1d4ed8 !important;
+        font-size: 8pt !important;
+        margin-bottom: 2.5mm !important;
+      }
+      .section-title, .close-content h2 {
+        font-size: 22pt !important;
+        line-height: 1.08 !important;
+        margin-bottom: 3.5mm !important;
+      }
+      .section-sub, .close-content p {
+        max-width: none;
+        font-size: 10.5pt !important;
+        line-height: 1.45 !important;
+      }
+      .grad-text, .gold-text, .stat-num, .comp-cap, .cred-num, .ask-amount, .seed-amount, .market-stat-num, .rev-total-num {
+        background: none !important;
+        -webkit-background-clip: initial !important;
+        -webkit-text-fill-color: currentColor !important;
+        color: #1d4ed8 !important;
+      }
+      .gold-text, .comp-cap.gold, .seed-amount { color: #b45309 !important; }
+
+      .stats-grid, .card-grid, .two-col, .market-grid, .ask-grid, .seed-grid, .proof-row {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 5mm !important;
+      }
+      .stats-grid, .revenue-grid, .cred-grid, .timeline, .angel-proof-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 4mm !important;
+      }
+      .comp-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 4mm !important;
+      }
+      .rails-list, .market-stat-list, .funds-list, .gets-list, .bowling-pins {
+        gap: 3mm !important;
+      }
+      .rail-row {
+        display: grid !important;
+        grid-template-columns: 22mm 45mm 1fr !important;
+        gap: 4mm !important;
+        padding: 4mm !important;
+      }
+
+      .card, .stat-card, .market-stat, .community-card, .comp-card, .rev-card, .cred-card, .proof-card, .phase, .get-card, .seed-card, .angel-proof-card, .wedge-step, .vert-chip, .pin, .success-bar, .revenue-total, .wedge-box, .insight-box, .timing-note, .cold-start-box, .angel-proof, .check-list li {
+        background: #ffffff !important;
+        border: 1px solid #d6dce8 !important;
+        border-radius: 4mm !important;
+        break-inside: avoid;
         page-break-inside: avoid;
       }
-      .inner, .full-bleed > .inner { padding: 0 !important; }
-      .fade-up { opacity: 1 !important; transform: none !important; }
-      .card, .stat-card, .market-stat, .comp-card, .rev-card, .cred-card, .proof-card, .phase, .get-card, .seed-card, .angel-proof, .angel-proof-card {
-        box-shadow: none !important; break-inside: avoid; page-break-inside: avoid;
+      .card, .stat-card, .market-stat, .community-card, .comp-card, .rev-card, .cred-card, .proof-card, .phase, .get-card, .seed-card, .angel-proof-card {
+        padding: 4mm !important;
       }
-      .hero-bg, .close-bg { display: none; }
-      a { color: inherit; text-decoration: none; }
+      .card-accent { display: none; }
+      .card-icon, .get-icon {
+        width: auto; height: auto; margin-bottom: 2mm;
+        background: transparent !important;
+        border: none !important;
+      }
+      .stat-card { text-align: left; }
+      .stat-num, .cred-num, .ask-amount, .seed-amount {
+        font-size: 22pt !important;
+        line-height: 1.0 !important;
+      }
+      .comp-cap, .market-stat-num, .rev-amount, .rev-total-num {
+        font-size: 16pt !important;
+      }
+      .card p, .comp-row, .community-desc, .market-stat-desc, .pin p, .rev-note, .cred-desc, .proof-card p, .phase-item, .get-card p, .seed-card p, .angel-proof-card p, .fund-detail {
+        font-size: 8.5pt !important;
+        color: #334155 !important;
+        line-height: 1.35 !important;
+      }
+      .card h3, .comp-company, .community-name, .rev-title, .proof-card h4, .phase-title, .get-card h4, .seed-card h4, .angel-proof-card h4 {
+        font-size: 10pt !important;
+        color: #0f172a !important;
+      }
+
+      .horizon-table {
+        font-size: 8pt !important;
+        margin-bottom: 5mm !important;
+        break-inside: avoid;
+      }
+      .horizon-table th, .horizon-table td {
+        padding: 2.5mm !important;
+        border: 1px solid #d6dce8 !important;
+      }
+      thead { display: table-header-group; }
+      tr { break-inside: avoid; page-break-inside: avoid; }
+
+      .fund-bar-bg { background: #e2e8f0 !important; }
+      .fund-bar { background: #1d4ed8 !important; }
+      .metric-chip, .h-badge, .rail-tag, .community-stars, .ctag, .proof-badge {
+        background: #eff6ff !important;
+        border: 1px solid #bfdbfe !important;
+        color: #1d4ed8 !important;
+      }
+      .success-metrics, .wedge-math, .verticals-row { gap: 2.5mm !important; }
+      .angel-proof {
+        margin-top: 7mm !important;
+        padding: 6mm !important;
+        background: #f8fafc !important;
+      }
+      .angel-proof h3 { font-size: 16pt !important; }
+      .angel-proof-intro { font-size: 9.5pt !important; }
+
+      footer {
+        display: flex !important;
+        max-width: none !important;
+        padding: 5mm 0 0 !important;
+        border-top: 1px solid #d6dce8 !important;
+      }
+      footer .logo {
+        background: none !important;
+        -webkit-text-fill-color: #1d4ed8 !important;
+        color: #1d4ed8 !important;
+      }
     }
   </style>
 </head>
