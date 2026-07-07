@@ -14,6 +14,10 @@
       --bg2:       #0d1230;
       --card:      rgba(255,255,255,0.04);
       --border:    rgba(255,255,255,0.08);
+      --nav-bg:    rgba(7,9,26,0.85);
+      --hero-glow-blue: rgba(59,130,246,0.12);
+      --hero-glow-teal: rgba(13,148,136,0.08);
+      --surface-strong: rgba(2,6,23,0.44);
       --blue:      #3b82f6;
       --teal:      #0d9488;
       --gold:      #f59e0b;
@@ -24,6 +28,20 @@
       --navy:      #1e3a8a;
       --grad:      linear-gradient(135deg, #3b82f6, #0d9488);
       --grad-gold: linear-gradient(135deg, #f59e0b, #ef4444);
+    }
+
+    body.light-theme {
+      --bg:        #f8fafc;
+      --bg2:       #eef4ff;
+      --card:      rgba(15,23,42,0.035);
+      --border:    rgba(15,23,42,0.12);
+      --nav-bg:    rgba(248,250,252,0.9);
+      --hero-glow-blue: rgba(59,130,246,0.16);
+      --hero-glow-teal: rgba(13,148,136,0.12);
+      --surface-strong: rgba(255,255,255,0.72);
+      --white:     #0f172a;
+      --muted:     #475569;
+      --dim:       #64748b;
     }
 
     html { scroll-behavior: smooth; }
@@ -44,7 +62,7 @@
       transition: background 0.3s, backdrop-filter 0.3s;
     }
     nav.scrolled {
-      background: rgba(7,9,26,0.85);
+      background: var(--nav-bg);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
     }
@@ -62,6 +80,14 @@
       text-decoration: none; transition: opacity 0.2s, transform 0.2s;
     }
     .nav-cta:hover { opacity: 0.85; transform: translateY(-1px); }
+    .nav-actions { display: flex; gap: 0.6rem; align-items: center; }
+    .nav-button {
+      background: var(--card); color: var(--white); border: 1px solid var(--border);
+      padding: 0.55rem 0.9rem; border-radius: 100px;
+      font-size: 0.8rem; font-weight: 700; cursor: pointer;
+      transition: border-color 0.2s, transform 0.2s, background 0.2s;
+    }
+    .nav-button:hover { border-color: rgba(59,130,246,0.35); transform: translateY(-1px); }
 
     /* ── SECTIONS ── */
     section { padding: 7rem 4rem; max-width: 1200px; margin: 0 auto; }
@@ -77,8 +103,8 @@
     }
     .hero-bg {
       position: absolute; inset: 0; z-index: 0;
-      background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(59,130,246,0.12) 0%, transparent 70%),
-                  radial-gradient(ellipse 50% 40% at 20% 80%, rgba(13,148,136,0.08) 0%, transparent 60%);
+      background: radial-gradient(ellipse 80% 60% at 60% 40%, var(--hero-glow-blue) 0%, transparent 70%),
+                  radial-gradient(ellipse 50% 40% at 20% 80%, var(--hero-glow-teal) 0%, transparent 60%);
     }
     .hero-content { position: relative; z-index: 1; max-width: 900px; }
     .hero-badge {
@@ -493,6 +519,47 @@
       line-height: 1; margin-bottom: 0.5rem;
     }
     .ask-label { font-size: 1rem; color: var(--muted); margin-bottom: 2.5rem; }
+    #seed-round { max-width: none; padding: 7rem 4rem; }
+    #seed-round .inner { max-width: 1200px; margin: 0 auto; }
+    .seed-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 3rem; align-items: start; }
+    .seed-amount {
+      font-size: 3.5rem; font-weight: 900; letter-spacing: -0.06em;
+      background: var(--grad-gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      line-height: 1; margin-bottom: 0.5rem;
+    }
+    .seed-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 1.25rem;
+      padding: 1.5rem 1.75rem; margin-bottom: 1rem;
+    }
+    .seed-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .seed-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
+    .angel-proof {
+      margin-top: 3rem;
+      padding: 2rem;
+      background: linear-gradient(135deg, rgba(13,148,136,0.12), rgba(59,130,246,0.08));
+      border: 1px solid rgba(13,148,136,0.28);
+      border-radius: 1.5rem;
+    }
+    .angel-proof-kicker {
+      font-size: 0.75rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+      color: #5eead4; margin-bottom: 0.75rem;
+    }
+    .angel-proof h3 {
+      font-size: 2rem; font-weight: 900; letter-spacing: -0.04em;
+      line-height: 1.1; max-width: 820px; margin-bottom: 1rem;
+    }
+    .angel-proof-intro {
+      font-size: 1rem; color: var(--muted); line-height: 1.7;
+      max-width: 880px; margin-bottom: 1.5rem;
+    }
+    .angel-proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .angel-proof-card {
+      background: var(--surface-strong); border: 1px solid var(--border);
+      border-radius: 1rem; padding: 1.25rem;
+    }
+    .angel-proof-card h4 { font-size: 0.95rem; font-weight: 800; margin-bottom: 0.45rem; }
+    .angel-proof-card p { font-size: 0.83rem; color: var(--muted); line-height: 1.55; }
+    .angel-proof-card strong { color: var(--white); }
     .funds-list { display: flex; flex-direction: column; gap: 1.25rem; }
     .fund-item {}
     .fund-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem; }
@@ -556,6 +623,8 @@
     @media (max-width: 900px) {
       nav { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
+      .nav-actions { gap: 0.45rem; }
+      .nav-button, .nav-cta { padding: 0.5rem 0.8rem; font-size: 0.75rem; }
       section { padding: 5rem 1.5rem; }
       #stats { padding: 4rem 1.5rem; }
       #why-now, #team, #ask { padding: 5rem 1.5rem; }
@@ -569,11 +638,221 @@
       .cred-grid { grid-template-columns: 1fr 1fr; }
       .timeline { grid-template-columns: 1fr; }
       .ask-grid { grid-template-columns: 1fr; }
+      .seed-grid { grid-template-columns: 1fr; }
+      .angel-proof-grid { grid-template-columns: 1fr; }
       .market-grid { grid-template-columns: 1fr; }
       .proof-row { grid-template-columns: 1fr; }
       .rail-row { grid-template-columns: 1fr; }
       .stripe-grid { grid-template-columns: 1fr; }
       footer { padding: 2rem 1.5rem; }
+    }
+    @media print {
+      @page { size: A4; margin: 12mm; }
+
+      :root, body.light-theme {
+        --bg: #ffffff;
+        --bg2: #ffffff;
+        --card: #ffffff;
+        --border: #d6dce8;
+        --white: #0f172a;
+        --muted: #334155;
+        --dim: #64748b;
+        --blue: #1d4ed8;
+        --teal: #0f766e;
+        --gold: #b45309;
+        --red: #b91c1c;
+      }
+
+      * {
+        animation: none !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      html { scroll-behavior: auto; }
+      body {
+        background: #ffffff !important;
+        color: #0f172a !important;
+        font-size: 9.5pt;
+        line-height: 1.38;
+        overflow: visible;
+      }
+
+      nav, .hero-scroll, .hero-actions, .close-actions { display: none !important; }
+      .hero-bg, .close-bg, .divider { display: none !important; }
+      .fade-up { opacity: 1 !important; transform: none !important; }
+      a { color: inherit; text-decoration: none; }
+
+      section, #stats, #why-now, #comparables, #team, #ask, #seed-round {
+        max-width: none !important;
+        width: 100% !important;
+        padding: 0 0 9mm !important;
+        margin: 0 0 9mm !important;
+        background: #ffffff !important;
+        border-bottom: 1px solid #e2e8f0;
+        break-inside: auto;
+        page-break-inside: auto;
+      }
+      section:not(#hero), #why-now, #comparables, #team, #ask, #seed-round {
+        break-before: page;
+        page-break-before: always;
+      }
+      #hero {
+        min-height: auto !important;
+        padding: 0 0 10mm !important;
+        border-bottom: 2px solid #1d4ed8;
+      }
+      #close {
+        min-height: auto !important;
+        text-align: left;
+        align-items: flex-start;
+      }
+      .inner, .full-bleed > .inner { max-width: none !important; padding: 0 !important; }
+      .hero-content, .close-content { max-width: none !important; }
+
+      .hero-badge {
+        margin-bottom: 7mm;
+        color: #1d4ed8 !important;
+        background: #eff6ff !important;
+        border: 1px solid #bfdbfe !important;
+      }
+      .hero-badge .dot { display: none; }
+      h1 {
+        font-size: 34pt !important;
+        line-height: 0.98 !important;
+        letter-spacing: -0.04em;
+        margin-bottom: 6mm !important;
+      }
+      .hero-sub {
+        max-width: 170mm;
+        font-size: 12pt !important;
+        line-height: 1.45 !important;
+        margin-bottom: 0 !important;
+      }
+      .section-header { margin-bottom: 7mm !important; }
+      .section-label {
+        color: #1d4ed8 !important;
+        font-size: 8pt !important;
+        margin-bottom: 2.5mm !important;
+      }
+      .section-title, .close-content h2 {
+        font-size: 22pt !important;
+        line-height: 1.08 !important;
+        margin-bottom: 3.5mm !important;
+      }
+      .section-sub, .close-content p {
+        max-width: none;
+        font-size: 10.5pt !important;
+        line-height: 1.45 !important;
+      }
+      .grad-text, .gold-text, .stat-num, .comp-cap, .cred-num, .ask-amount, .seed-amount, .market-stat-num, .rev-total-num {
+        background: none !important;
+        -webkit-background-clip: initial !important;
+        -webkit-text-fill-color: currentColor !important;
+        color: #1d4ed8 !important;
+      }
+      .gold-text, .comp-cap.gold, .seed-amount { color: #b45309 !important; }
+
+      .stats-grid, .card-grid, .two-col, .market-grid, .ask-grid, .seed-grid, .proof-row {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 5mm !important;
+      }
+      .stats-grid, .revenue-grid, .cred-grid, .timeline, .angel-proof-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 4mm !important;
+      }
+      .comp-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 4mm !important;
+      }
+      .rails-list, .market-stat-list, .funds-list, .gets-list, .bowling-pins {
+        gap: 3mm !important;
+      }
+      .rail-row {
+        display: grid !important;
+        grid-template-columns: 22mm 45mm 1fr !important;
+        gap: 4mm !important;
+        padding: 4mm !important;
+      }
+
+      .card, .stat-card, .market-stat, .community-card, .comp-card, .rev-card, .cred-card, .proof-card, .phase, .get-card, .seed-card, .angel-proof-card, .wedge-step, .vert-chip, .pin, .success-bar, .revenue-total, .wedge-box, .insight-box, .timing-note, .cold-start-box, .angel-proof, .check-list li {
+        background: #ffffff !important;
+        border: 1px solid #d6dce8 !important;
+        border-radius: 4mm !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .card, .stat-card, .market-stat, .community-card, .comp-card, .rev-card, .cred-card, .proof-card, .phase, .get-card, .seed-card, .angel-proof-card {
+        padding: 4mm !important;
+      }
+      .card-accent { display: none; }
+      .card-icon, .get-icon {
+        width: auto; height: auto; margin-bottom: 2mm;
+        background: transparent !important;
+        border: none !important;
+      }
+      .stat-card { text-align: left; }
+      .stat-num, .cred-num, .ask-amount, .seed-amount {
+        font-size: 22pt !important;
+        line-height: 1.0 !important;
+      }
+      .comp-cap, .market-stat-num, .rev-amount, .rev-total-num {
+        font-size: 16pt !important;
+      }
+      .card p, .comp-row, .community-desc, .market-stat-desc, .pin p, .rev-note, .cred-desc, .proof-card p, .phase-item, .get-card p, .seed-card p, .angel-proof-card p, .fund-detail {
+        font-size: 8.5pt !important;
+        color: #334155 !important;
+        line-height: 1.35 !important;
+      }
+      .card h3, .comp-company, .community-name, .rev-title, .proof-card h4, .phase-title, .get-card h4, .seed-card h4, .angel-proof-card h4 {
+        font-size: 10pt !important;
+        color: #0f172a !important;
+      }
+
+      .horizon-table {
+        font-size: 8pt !important;
+        margin-bottom: 5mm !important;
+        break-inside: avoid;
+      }
+      .horizon-table th, .horizon-table td {
+        padding: 2.5mm !important;
+        border: 1px solid #d6dce8 !important;
+      }
+      thead { display: table-header-group; }
+      tr { break-inside: avoid; page-break-inside: avoid; }
+
+      .fund-bar-bg { background: #e2e8f0 !important; }
+      .fund-bar { background: #1d4ed8 !important; }
+      .metric-chip, .h-badge, .rail-tag, .community-stars, .ctag, .proof-badge {
+        background: #eff6ff !important;
+        border: 1px solid #bfdbfe !important;
+        color: #1d4ed8 !important;
+      }
+      .success-metrics, .wedge-math, .verticals-row { gap: 2.5mm !important; }
+      .angel-proof {
+        margin-top: 7mm !important;
+        padding: 6mm !important;
+        background: #f8fafc !important;
+      }
+      .angel-proof h3 { font-size: 16pt !important; }
+      .angel-proof-intro { font-size: 9.5pt !important; }
+
+      footer {
+        display: flex !important;
+        max-width: none !important;
+        padding: 5mm 0 0 !important;
+        border-top: 1px solid #d6dce8 !important;
+      }
+      footer .logo {
+        background: none !important;
+        -webkit-text-fill-color: #1d4ed8 !important;
+        color: #1d4ed8 !important;
+      }
     }
   </style>
 </head>
@@ -590,20 +869,24 @@
     <li><a href="#team">Team</a></li>
     <li><a href="#ask">The Ask</a></li>
   </ul>
-  <a href="mailto:mattyv01@gmail.com?subject=AgentMarket Seed Round" class="nav-cta">Request Deck →</a>
+  <div class="nav-actions">
+    <button type="button" class="nav-button" id="theme-toggle" aria-label="Switch to light theme">Light mode</button>
+    <button type="button" class="nav-button" id="print-button">Print PDF</button>
+    <a href="mailto:mattyv01@gmail.com?subject=AgentMarket Angel Round" class="nav-cta">Request Deck →</a>
+  </div>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <div class="hero-badge"><span class="dot"></span>Seed Round Open — $3–5M</div>
+    <div class="hero-badge"><span class="dot"></span>Angel Round Open — $100K for 5%</div>
     <h1>The Trust Layer<br><span class="grad-text">for Agentic Physical Commerce.</span></h1>
     <p class="hero-sub">
       Stripe is making ordinary ecommerce agent-ready. AgentMarket handles the hard transactions Stripe Checkout doesn't: RFQs, negotiation, escrow, fulfilment evidence, disputes, reputation, and multi-party settlement.
     </p>
     <div class="hero-actions">
-      <a href="mailto:mattyv01@gmail.com?subject=AgentMarket Seed Round" class="btn-primary">Request Investor Deck →</a>
+      <a href="mailto:mattyv01@gmail.com?subject=AgentMarket Angel Round" class="btn-primary">Request Investor Deck →</a>
       <a href="#solution" class="btn-ghost">See the Vision</a>
     </div>
     <p class="hero-scroll">Scroll to explore</p>
@@ -624,9 +907,9 @@
       <div class="stat-source">Azure · AWS · Google · 2026</div>
     </div>
     <div class="stat-card fade-up fade-up-delay-2">
-      <span class="stat-num" data-count="195" data-suffix="K+">195K+</span>
+      <span class="stat-num" data-count="507" data-suffix="K+" data-github-stars-combined="openclaw,hermes">507K+</span>
       <div class="stat-label">GitHub stars: OpenClaw + Hermes combined</div>
-      <div class="stat-source">Agent operators actively seeking commercial rails</div>
+      <div class="stat-source" data-github-stars-source>Live from GitHub API · OpenClaw + Hermes</div>
     </div>
   </div>
 </div>
@@ -737,7 +1020,7 @@
       <div class="rail-row fade-up fade-up-delay-3">
         <div class="rail-tag">x402</div>
         <div class="rail-title">Agent Payment Protocol</div>
-        <div class="rail-body">V2 live. Reusable sessions, multi-chain payments. AgentMarket uses x402 for micropayments and custom escrow for high-value physical goods transactions where simple checkout is insufficient.</div>
+        <div class="rail-body">V2 live. Reusable sessions, multi-chain payments. Foundation members: Google, Visa, Coinbase, Cloudflare. AgentMarket uses x402 for micropayments and custom escrow for high-value physical goods transactions where simple checkout is insufficient.</div>
       </div>
     </div>
 
@@ -816,7 +1099,7 @@
       <div class="community-card fade-up">
         <div class="community-header">
           <span class="community-name">🦞 OpenClaw</span>
-          <span class="community-stars">⭐ 100K+ stars</span>
+          <span class="community-stars" data-github-stars="openclaw">⭐ 369K+ stars</span>
         </div>
         <div class="community-desc">Open-source autonomous agent — viral in February 2026, now the closest thing to a personal JARVIS. 50+ integrations. ClawCon community conference. Operators everywhere asking: <em>how does my agent make money?</em></div>
         <div class="community-tags">
@@ -830,7 +1113,7 @@
       <div class="community-card fade-up fade-up-delay-1">
         <div class="community-header">
           <span class="community-name">🔮 Hermes Agent</span>
-          <span class="community-stars">⭐ 95K+ stars</span>
+          <span class="community-stars" data-github-stars="hermes">⭐ 137K+ stars</span>
         </div>
         <div class="community-desc">Nous Research's self-improving agent — fastest-growing framework of 2026. Persistent memory, MIT-licensed for commercial use. Large Discord with developers actively building revenue-generating agent workflows.</div>
         <div class="community-tags">
@@ -842,7 +1125,7 @@
       </div>
 
       <div class="cold-start-box fade-up fade-up-delay-2">
-        <strong>The cold-start problem is already solved.</strong> Both sides of the marketplace come from the same communities. Operators want their agents generating revenue. AgentMarket gives them the rails. One MCP skill published → 195,000+ deployed agents can trade.
+        <strong>The cold-start problem is already solved.</strong> Both sides of the marketplace come from the same communities. Operators want their agents generating revenue. AgentMarket gives them the rails. One MCP skill published → a <span data-github-stars-combined-text="openclaw,hermes">507K+ GitHub-star audience</span> can start testing the rails.
       </div>
 
       <p style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--dim);margin:1.25rem 0 0.75rem;">Where agents will trade first</p>
@@ -934,8 +1217,8 @@
 <section id="revenue">
   <div class="section-header fade-up">
     <span class="section-label">Business Model</span>
-    <h2 class="section-title">Six revenue streams.<br><span class="grad-text">Built around trust, not checkout.</span></h2>
-    <p class="section-sub">Stripe can own payment acceptance. AgentMarket earns on the higher-value layer: transaction fees, escrow, insurance, expert verification, want-signals, and category data in complex physical-goods commerce.</p>
+    <h2 class="section-title">Six revenue streams.<br><span class="grad-text">A path to $500M+.</span></h2>
+    <p class="section-sub">Every stream compounds independently. The unit economics work at 1% of eBay's scale. At 5%, this is a $1B company. Agentic commerce is growing 10× faster than traditional e-commerce — the window compounds in our favour.</p>
   </div>
 
   <!-- THREE-HORIZON MODEL -->
@@ -979,14 +1262,14 @@
         </tr>
       </tbody>
     </table>
-    <div class="timing-note" style="margin-top:0;">Stripe's Agentic Commerce Suite is a market validation signal, not a replacement. Its hosted ACP endpoints and Checkout Sessions make simple commerce accessible to agents; AgentMarket captures the trust-heavy transactions that require workflow beyond checkout.</div>
+    <div class="timing-note" style="margin-top:0;">AI-sourced retail traffic surged 1,200% year-over-year in 2025. Conversions from AI referrals rose 1,247%. This isn't a future trend — it's happening now, and AgentMarket is the infrastructure that captures it.</div>
   </div>
 
   <div class="revenue-grid">
     <div class="rev-card fade-up">
       <div class="rev-amount">$18.25M</div>
       <div class="rev-title">Transaction Fees</div>
-      <div class="rev-note">1% buyer + 1% seller for negotiated, escrowed trades. Stripe/Checkout remains an optional payment adapter where fiat card rails are useful.</div>
+      <div class="rev-note">1% buyer + 1% seller. vs eBay's effective 12%+ rate. A $50K/month dealer saves $5,500/month vs eBay.</div>
     </div>
     <div class="rev-card fade-up fade-up-delay-1">
       <div class="rev-amount">$2.83M net</div>
@@ -996,7 +1279,7 @@
     <div class="rev-card fade-up fade-up-delay-2">
       <div class="rev-amount">$286–428K</div>
       <div class="rev-title">Escrow Yield Carry</div>
-      <div class="rev-note">Idle escrow deployed to Aave USDC where appropriate. For fiat/card flows, Stripe can be integrated as a payment and payout adapter.</div>
+      <div class="rev-note">Idle escrow deployed to Aave USDC. Zero marginal cost once deployed. Scales linearly with GMV.</div>
     </div>
     <div class="rev-card fade-up">
       <div class="rev-amount">$90K+</div>
@@ -1079,9 +1362,9 @@
 <section id="milestones">
   <div class="section-header fade-up">
     <span class="section-label">Roadmap</span>
-    <h2 class="section-title">Plug in. Stay compatible. <span class="grad-text">Own the hard layer.</span></h2>
+    <h2 class="section-title">Plug in. Let the communities <span class="grad-text">do the rest.</span></h2>
     <p class="section-sub">
-      We don't need to fight Stripe for checkout. We publish the agent-native trust layer through MCP/A2A, support ACP where useful, and let OpenClaw and Hermes operators run RFQs, quotes, escrow, evidence, and disputes from day one.
+      We don't need to convince anyone to use a marketplace. OpenClaw and Hermes operators already want commercial rails. We publish one MCP skill into a <span data-github-stars-combined-text="openclaw,hermes">507K+ GitHub-star audience</span> and start the feedback loop immediately. Day one of funding is day one of building — the full spec is already written.
     </p>
   </div>
 
@@ -1092,9 +1375,9 @@
         <div class="phase-title">Plug Into the Communities</div>
       </div>
       <div class="phase-items">
-        <div class="phase-item">AgentMarket MCP skill published — RFQ, quote, escrow, evidence, and dispute tools discoverable by agents</div>
+        <div class="phase-item">AgentMarket MCP skill published — instantly discoverable by any OpenClaw or Hermes agent</div>
         <div class="phase-item">A2A-compliant agent card live at .well-known/agent-card.json</div>
-        <div class="phase-item">ACP compatibility path documented for merchant checkout handoff where useful</div>
+        <div class="phase-item">SKILL.md published — agents onboard themselves</div>
         <div class="phase-item">Active in OpenClaw + Hermes Discord: demo, feedback, early operators</div>
       </div>
     </div>
@@ -1105,7 +1388,7 @@
       </div>
       <div class="phase-items">
         <div class="phase-item">Want-signal protocol live — agents broadcast demand, agents respond with quotes</div>
-        <div class="phase-item">Escrow, staged release, fulfilment evidence, and on-chain reputation active for settlements</div>
+        <div class="phase-item">Escrow + on-chain reputation active for all settlements</div>
         <div class="phase-item">Community defines the first high-volume verticals organically</div>
         <div class="phase-item">100+ agent operators, first transactions settled end-to-end</div>
       </div>
@@ -1142,21 +1425,21 @@
     <div class="section-header fade-up">
       <span class="section-label">The Ask</span>
       <h2 class="section-title">Join us at the start.</h2>
-      <p class="section-sub">We're raising a seed round to build fast, seed the agent communities, and establish the dominant position in physical goods commerce before anyone else gets there.</p>
+      <p class="section-sub">We're raising a small angel round now to build the first working rails, seed the agent communities, and support supply-side sellers before the larger seed round in Q4 2026.</p>
     </div>
 
     <div class="ask-grid">
       <div class="fade-up">
-        <div class="ask-amount">$3–5M</div>
-        <div class="ask-label">Seed Round · April 2026</div>
+        <div class="ask-amount">$100K USD</div>
+        <div class="ask-label">Angel Round · May–July 2026 · 5% equity</div>
         <div class="funds-list">
           <div class="fund-item">
             <div class="fund-header">
               <span class="fund-name">Engineering</span>
-              <span class="fund-pct">45%</span>
+              <span class="fund-pct">50%</span>
             </div>
-            <div class="fund-bar-bg"><div class="fund-bar" style="width:45%"></div></div>
-            <div class="fund-detail">API, CLI, MCP server, smart contracts, escrow infrastructure</div>
+            <div class="fund-bar-bg"><div class="fund-bar" style="width:50%"></div></div>
+            <div class="fund-detail">API, CLI, MCP server, agent card, smart-contract prototypes</div>
           </div>
           <div class="fund-item">
             <div class="fund-header">
@@ -1164,42 +1447,42 @@
               <span class="fund-pct">25%</span>
             </div>
             <div class="fund-bar-bg"><div class="fund-bar" style="width:25%"></div></div>
-            <div class="fund-detail">Agent community partnerships, developer relations, card show presence</div>
+            <div class="fund-detail">OpenClaw and Hermes community activation, demos, developer feedback loops</div>
           </div>
           <div class="fund-item">
             <div class="fund-header">
-              <span class="fund-name">Operations &amp; Compliance</span>
-              <span class="fund-pct">15%</span>
+              <span class="fund-name">Supply-Side Seller Support</span>
+              <span class="fund-pct">20%</span>
             </div>
-            <div class="fund-bar-bg"><div class="fund-bar" style="width:15%"></div></div>
-            <div class="fund-detail">Infrastructure, security, KYC/AML, legal structure</div>
+            <div class="fund-bar-bg"><div class="fund-bar" style="width:20%"></div></div>
+            <div class="fund-detail">Seller onboarding, catalogue preparation, early inventory and fulfilment workflows</div>
           </div>
           <div class="fund-item">
             <div class="fund-header">
-              <span class="fund-name">Marketing &amp; GTM</span>
-              <span class="fund-pct">15%</span>
+              <span class="fund-name">Operations &amp; Runway</span>
+              <span class="fund-pct">5%</span>
             </div>
-            <div class="fund-bar-bg"><div class="fund-bar" style="width:15%"></div></div>
-            <div class="fund-detail">Dealer acquisition, influencer partnerships, content</div>
+            <div class="fund-bar-bg"><div class="fund-bar" style="width:5%"></div></div>
+            <div class="fund-detail">Infrastructure, security, legal setup and basic operating runway</div>
           </div>
         </div>
       </div>
 
       <div>
-        <p style="font-size:0.8rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;">What investors get</p>
+        <p style="font-size:0.8rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;">Round sequence</p>
         <div class="gets-list">
           <div class="get-card fade-up">
-            <div class="get-icon">🎯</div>
+            <div class="get-icon">🌱</div>
             <div>
-              <h4>First-mover position</h4>
-              <p>Stripe validates agentic checkout. AgentMarket owns the adjacent trust layer for physical goods: RFQs, escrow, evidence, disputes, and reputation.</p>
+              <h4>Angel: $100K for 5%</h4>
+              <p>Open now through July 2026. Funds the build, community seeding, and initial seller supply needed to prove live agent-originated transactions.</p>
             </div>
           </div>
           <div class="get-card fade-up fade-up-delay-1">
-            <div class="get-icon">⚙️</div>
+            <div class="get-icon">🚀</div>
             <div>
-              <h4>Proven execution team</h4>
-              <p>10 years, 100+ marketplaces, 50 specialists. AI delivery velocity proven by ChimeDeck. Not a team learning to build — a team that builds fast.</p>
+              <h4>Seed: Oct–Dec 2026</h4>
+              <p>Planned seed round after the angel-funded MVP, seller onboarding, and first transaction proof points are in place.</p>
             </div>
           </div>
           <div class="get-card fade-up fade-up-delay-2">
@@ -1213,14 +1496,72 @@
             <div class="get-icon">🔄</div>
             <div>
               <h4>Six compounding moats</h4>
-              <p>Six independent revenue streams. Data moats from insurance, catalogue, evidence, and reputation compound with every verified transaction. Network effects do the rest.</p>
+              <p>Six independent revenue streams. Data moats from insurance, catalogue, and reputation compound with every transaction. Network effects do the rest.</p>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <div class="angel-proof fade-up">
+      <div class="angel-proof-kicker">What the Angel Round Proves</div>
+      <h3>$100K answers the only question that matters before seed: can agents transact around real physical goods?</h3>
+      <p class="angel-proof-intro">
+        The angel round is deliberately small. It is designed to move AgentMarket from protocol thesis to live evidence: autonomous agents discovering demand, responding with supply, settling through escrow, and building reputation from completed trades.
+      </p>
+      <div class="angel-proof-grid">
+        <div class="angel-proof-card">
+          <h4>Working agent rails</h4>
+          <p><strong>MCP publishing, want-signals, agent cards, API and CLI.</strong> The first proof is not a mockup — it is agents finding and quoting real marketplace opportunities.</p>
+        </div>
+        <div class="angel-proof-card">
+          <h4>First settled trades</h4>
+          <p><strong>Escrow-backed USDC settlements and transaction records.</strong> The goal is to show agents can complete end-to-end physical-goods trades, not just recommend them.</p>
+        </div>
+        <div class="angel-proof-card">
+          <h4>Seed-ready evidence</h4>
+          <p><strong>Seller feedback, early GMV, repeat activity and agent-originated transaction data.</strong> The Oct–Dec seed round then scales evidence rather than funding belief.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
+<!-- SEED ROUND -->
+<section id="seed-round">
+  <div class="inner">
+    <div class="section-header fade-up">
+      <span class="section-label">Next Raise</span>
+      <h2 class="section-title">The angel round proves the rails.<br><span class="gold-text">The seed round scales them.</span></h2>
+      <p class="section-sub">We want investors to understand the full funding path now: this $100K angel round is deliberately lean, but AgentMarket will need a larger seed round to scale the marketplace once the proof points are in place.</p>
+    </div>
+
+    <div class="seed-grid">
+      <div class="fade-up">
+        <div class="seed-amount">$3–5M USD</div>
+        <div class="ask-label">Planned Seed Round · Oct–Dec 2026</div>
+        <p style="font-size:0.95rem;color:var(--muted);line-height:1.7;max-width:460px;">
+          The seed round is expected to fund the step-change from validated MVP to scaled marketplace: deeper engineering, seller liquidity, trust infrastructure, compliance, integrations, and category expansion.
+        </p>
+      </div>
+
+      <div>
+        <div class="seed-card fade-up">
+          <h4>Set expectations early</h4>
+          <p>The current angel round is not intended to fully capitalise AgentMarket. It funds proof: working rails, activated communities, seller onboarding, and first transaction evidence.</p>
+        </div>
+        <div class="seed-card fade-up fade-up-delay-1">
+          <h4>Scale needs capital</h4>
+          <p>Once agent-originated transactions are live, the bottleneck shifts to engineering depth, seller support, liquidity, trust and safety, insurance operations, and expansion into additional physical goods categories.</p>
+        </div>
+        <div class="seed-card fade-up fade-up-delay-2">
+          <h4>Seed milestones</h4>
+          <p>Target proof points before the raise: live MCP/A2A rails, supply-side sellers onboarded, early GMV, repeat transactions, and credible evidence that agents can initiate and complete physical-goods trades.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- CLOSE -->
 <section id="close">
@@ -1228,11 +1569,11 @@
   <div class="close-content">
     <h2>
       The future of commerce<br>
-      <span class="grad-text">starts with checkout.</span><br>
-      <span class="gold-text">It scales through trust.</span>
+      <span class="grad-text">is not a checkout button.</span><br>
+      <span class="gold-text">It's an API call between agents.</span>
     </h2>
     <p>
-      Stripe will make ordinary ecommerce agent-ready. AgentMarket exists for the transactions that are not ordinary ecommerce: negotiated, escrowed, multi-party, evidence-backed physical commerce between autonomous agents.
+      OpenClaw has <span data-github-stars-text="openclaw">369,000+ GitHub stars</span>. Hermes has <span data-github-stars-text="hermes">137,000+ GitHub stars</span>. Every one of those operators is asking the same question: <em>how does my agent make money?</em> AgentMarket is the answer — and we have the spec, the team, and the track record to build it fast.
     </p>
     <div class="close-actions">
       <a href="https://www.linkedin.com/in/mattyv01" target="_blank" rel="noopener noreferrer" class="btn-primary">Get in Touch →</a>
@@ -1241,7 +1582,7 @@
     <p class="contact-info">
       <a href="https://www.linkedin.com/in/mattyv01" target="_blank" rel="noopener noreferrer">LinkedIn: mattyv01</a> &nbsp;·&nbsp;
       <a href="https://journeyh.io" target="_blank">journeyh.io</a> &nbsp;·&nbsp;
-      Seed Round · April 2026
+      Angel Round · May–July 2026
     </p>
   </div>
 </section>
@@ -1253,6 +1594,25 @@
 </footer>
 
 <script>
+  // Theme toggle + print controls
+  const themeToggle = document.getElementById('theme-toggle');
+  const printButton = document.getElementById('print-button');
+  const savedTheme = localStorage.getItem('agentmarket-theme');
+
+  function setTheme(theme) {
+    const isLight = theme === 'light';
+    document.body.classList.toggle('light-theme', isLight);
+    themeToggle.textContent = isLight ? 'Dark mode' : 'Light mode';
+    themeToggle.setAttribute('aria-label', isLight ? 'Switch to dark theme' : 'Switch to light theme');
+    localStorage.setItem('agentmarket-theme', theme);
+  }
+
+  setTheme(savedTheme || 'dark');
+  themeToggle.addEventListener('click', () => {
+    setTheme(document.body.classList.contains('light-theme') ? 'dark' : 'light');
+  });
+  printButton.addEventListener('click', () => window.print());
+
   // Nav scroll effect
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
@@ -1270,6 +1630,71 @@
   }, { threshold: 0.12 });
 
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Live GitHub star counts for public repos. Falls back to the baked-in numbers
+  // if GitHub rate-limits, blocks the request, or the visitor is offline.
+  const githubStarRepos = {
+    openclaw: 'OpenClaw/openclaw',
+    hermes: 'NousResearch/hermes-agent',
+  };
+
+  function compactStars(count) {
+    if (!Number.isFinite(count)) return null;
+    if (count >= 1_000_000) return `${(Math.floor(count / 100_000) / 10).toFixed(1)}M+`;
+    if (count >= 1_000) return `${Math.floor(count / 1_000)}K+`;
+    return `${count}+`;
+  }
+
+  async function loadGithubStars() {
+    try {
+      const entries = await Promise.all(Object.entries(githubStarRepos).map(async ([key, repo]) => {
+        const response = await fetch(`https://api.github.com/repos/${repo}`, {
+          headers: { Accept: 'application/vnd.github+json' },
+        });
+        if (!response.ok) throw new Error(`GitHub API ${response.status} for ${repo}`);
+        const data = await response.json();
+        return [key, data.stargazers_count];
+      }));
+
+      const stars = Object.fromEntries(entries);
+
+      document.querySelectorAll('[data-github-stars]').forEach(el => {
+        const count = stars[el.dataset.githubStars];
+        const formatted = compactStars(count);
+        if (formatted) el.textContent = `⭐ ${formatted} stars`;
+      });
+
+      document.querySelectorAll('[data-github-stars-text]').forEach(el => {
+        const count = stars[el.dataset.githubStarsText];
+        const formatted = compactStars(count);
+        if (formatted) el.textContent = `${formatted} GitHub stars`;
+      });
+
+      document.querySelectorAll('[data-github-stars-combined]').forEach(el => {
+        const keys = el.dataset.githubStarsCombined.split(',');
+        const total = keys.reduce((sum, key) => sum + (stars[key] || 0), 0);
+        const roundedThousands = Math.floor(total / 1_000);
+        el.dataset.count = String(roundedThousands);
+        el.dataset.suffix = 'K+';
+        el.textContent = `${roundedThousands}K+`;
+      });
+
+      document.querySelectorAll('[data-github-stars-combined-text]').forEach(el => {
+        const keys = el.dataset.githubStarsCombinedText.split(',');
+        const total = keys.reduce((sum, key) => sum + (stars[key] || 0), 0);
+        const formatted = compactStars(total);
+        if (formatted) el.textContent = `${formatted} GitHub-star audience`;
+      });
+
+      document.querySelectorAll('[data-github-stars-source]').forEach(el => {
+        el.textContent = `Live from GitHub API · Updated ${new Date().toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}`;
+      });
+    } catch (error) {
+      console.warn('Using fallback GitHub star counts:', error);
+    }
+  }
+
+  loadGithubStars();
 
   // Animated counters
   function animateCounter(el) {
